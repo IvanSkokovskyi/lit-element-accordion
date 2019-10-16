@@ -1,22 +1,31 @@
 <!doctype html>
 <html>
 <head lang='en'>
-	<meta charset='utf-8'>
-	<meta name='viewport' content='width=device-width'>
-  <title>lit-element-build-rollup</title>
-  <!-- Force polyfills for testing -->
-  <!-- 
-  <script>
-    window.ShadyDOM = {
-      force: true
-    };
-    if (window.customElements) customElements.forcePolyfill = true;
-  </script>
-  -->
-  <script src='index.js'></script>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width'>
+    <title>lit-element-accordion</title>
+    <script src='index.js'></script>
 </head>
 <body>
-  <my-element></my-element>
-  <script src="webcomponents-loader.js"></script>
+<my-accordion>
+    <ac-item>
+        <ac-header></ac-header>
+        <ac-details></ac-details>
+    </ac-item>
+    <ac-item>
+        <ac-header>Header</ac-header>
+        <ac-details>Details</ac-details>
+    </ac-item>
+    <ac-item>
+        <ac-header>Header2 </ac-header>
+        <ac-details>Details2</ac-details>
+    </ac-item>
+    <ac-item>
+        <ac-header>Header3</ac-header>
+        <ac-details>Details3</ac-details>
+    </ac-item>
+</my-accordion>
+
+<script src="webcomponents-loader.js"></script>
 </body>
 </html>

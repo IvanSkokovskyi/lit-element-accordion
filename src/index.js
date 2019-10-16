@@ -1,1 +1,1 @@
-import './my-element.js';
+import './my-accordion.js';
