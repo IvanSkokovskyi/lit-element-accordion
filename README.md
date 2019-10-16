@@ -1,10 +1,10 @@
-# lit-element-build-rollup
+# lit-element-accordion
 
-A basic build config for lit-element. Uses Babel to transpile class properties and decorators, and Rollup to resolve npm-style imports.
+A basic build config for lit-element-accordion. Uses Babel to transpile class properties and decorators, and Rollup to resolve npm-style imports.
 
 ```
-git clone https://github.com/PolymerLabs/lit-element-build-rollup.git
-cd lit-element-build-rollup
+git clone https://github.com/IvanSkokovskyi/lit-element-accordion.git
+cd lit-element-accordion
 npm install
 npm run build
 npm run start
