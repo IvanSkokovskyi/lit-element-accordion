@@ -1,6 +1,6 @@
 {
   "name": "lit-element-accordion",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Build config for lit-element accordion with Babel and Rollup",
   "main": "index.js",
   "repository": "IvanSkokovskyi/lit-element-accordion",
@@ -13,17 +13,17 @@
   "author": "IvanSkokovskyi",
   "license": "BSD-3-Clause",
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.2.3",
-    "@babel/plugin-proposal-decorators": "^7.2.3",
-    "rollup": "^1.1.0",
-    "rollup-plugin-babel": "^4.3.0",
-    "rollup-plugin-node-resolve": "^4.0.0",
-    "@webcomponents/webcomponentsjs": "^2.2.4",
-    "serve": "^10.1.1"
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.6.0",
+    "rollup": "^1.24.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "@webcomponents/webcomponentsjs": "^2.3.0",
+    "serve": "^11.2.0"
   },
   "dependencies": {
-    "lit-element": "^2.0.0-rc.2",
+    "lit-element": "^2.2.1",
     "lit-html": "^1.1.2"
   }
 }
