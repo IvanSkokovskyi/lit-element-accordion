@@ -5,6 +5,11 @@
     <meta name='viewport' content='width=device-width'>
     <title>lit-element-accordion</title>
     <script src='index.js'></script>
+    <style>
+        body {
+            width: 50%
+        }
+    </style>
 </head>
 <body>
 <my-accordion>
@@ -17,12 +22,32 @@
         <ac-details>Details</ac-details>
     </ac-item>
     <ac-item>
-        <ac-header>Header2 </ac-header>
+        <ac-header>Header2</ac-header>
         <ac-details>Details2</ac-details>
     </ac-item>
     <ac-item>
         <ac-header>Header3</ac-header>
-        <ac-details>Details3</ac-details>
+        <ac-details>
+            <my-accordion>
+                <ac-item>
+                    <ac-header></ac-header>
+                    <ac-details></ac-details>
+                </ac-item>
+                <ac-item>
+                    <ac-header>Header</ac-header>
+                    <ac-details>Details</ac-details>
+                </ac-item>
+                <ac-item>
+                    <ac-header>Header2</ac-header>
+                    <ac-details>Details2</ac-details>
+                </ac-item>
+                <ac-item>
+                    <ac-header>Header3</ac-header>
+                    <ac-details>Details3</ac-details>
+                </ac-item>
+            </my-accordion>
+
+        </ac-details>
     </ac-item>
 </my-accordion>
 

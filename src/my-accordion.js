@@ -3,7 +3,14 @@ import {html, LitElement, property, css} from 'lit-element';
 class MyAccordion extends LitElement {
 
     static get styles() {
-        return css`:host{display: block;}`
+        return css`
+        :host{display: block;}
+        
+        :host-context(ac-details){
+            margin-left: -9px;
+            margin-right: -18px;
+        }
+        `
     }
 
     render() {
@@ -16,13 +23,14 @@ class MyAccordion extends LitElement {
     }
 
     manageSpoilers(ev) {
-        ev.target.toggleAttribute('active');
-
+        ev.stopPropagation();
         let active = this.querySelectorAll('ac-header[active]');
-
+        console.log(ev.target);
         active.forEach(function (el) {
-            if (el !== ev.target)
+            if (el !== ev.target){
                 el.removeAttribute('active');
+                console.log(el);
+            }
         });
     }
 }
@@ -38,8 +46,7 @@ class AcItem extends LitElement {
 }
 
 class AcHeader extends LitElement {
-    static get styles() {
-        return css`
+    static styles = css`
         :host{
             display: block;
             background-color: #eee;
@@ -72,15 +79,19 @@ class AcHeader extends LitElement {
         }
         :host([active]):after {
             content: "\\2212";
-        }`
-    }
+        }`;
+
 
     @property({type: CustomEvent}) clickHeader = new CustomEvent('clickHeader', {
         detail: {message: 'clickHeader happened.'},
         bubbles: true,
         composed: true
     });
-
+    @property({type: CustomEvent}) requestUpdateMaxHeight = new CustomEvent('requestUpdateMaxHeight', {
+        detail: {message: 'requestUpdateMaxHeight happened.'},
+        bubbles: true,
+        composed: true
+    });
     @property({
         type: Boolean,
         attribute: true,
@@ -94,7 +105,15 @@ class AcHeader extends LitElement {
     }
 
     handleClick() {
+        this.toggleAttribute('active');
+        let active = this.querySelectorAll('ac-header[active]');
+        active.forEach(function (el) {
+            if (el !== ev.target)
+                el.removeAttribute('active');
+        });
+
         this.dispatchEvent(this.clickHeader);
+        this.dispatchEvent(this.requestUpdateMaxHeight);
     }
 
     render() {
@@ -103,6 +122,7 @@ class AcHeader extends LitElement {
 
     attributeChangedCallback(name, oldval, newval) {
         console.log('attribute change: ', name, newval);
+
 
         if (this.hasAttribute('active')) {
             this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + "px";
@@ -123,11 +143,22 @@ class AcDetails extends LitElement {
             max-height: 0px;
             overflow: hidden;
             transition: max-height 0.2s ease-out;
-        }`
+        }
+        `
     }
 
     render() {
         return html`<slot >Default details</slot>`
+    }
+
+    constructor() {
+        super();
+        this.addEventListener('requestUpdateMaxHeight', this.updateHeight)
+    }
+
+    updateHeight() {
+        this.style.maxHeight = this.scrollHeight + "px";
+        console.log('details height updated');
     }
 }
 
